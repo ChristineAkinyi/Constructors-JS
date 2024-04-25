@@ -1,45 +1,38 @@
-class Car{
-    constructor (make,model,year,isAvailable = true){
-
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.isAvailable = isAvailable;
+// QUESTION ONE
+class Car {
+    constructor(make, model, year, isAvailable) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+      this.isAvailable = isAvailable;
     }
-
-    toggleAvailability(){
-        this.isAvailable = !this.isAvailable;
+    toggleAvailability() {
+      this.isAvailable = !this.isAvailable;
     }
-}
-
-const toyota = new Car("Subaru", "Impreza", 2001, true);
-console.log(toyota.isAvailable);
-toyota.toggleAvailability();
-console.log(toyota.isAvailable);
-
-class Rental{
-    constructor(car, renterName, rentalStartDate, rentalEndDate){
-        this.car = car;
-        this.renterName = renterName;
-        this.rentalStartDate = rentalStartDate;
-        this.rentalEndDate = rentalEndDate;
+  }
+  
+  class Rental {
+    constructor(car, renterName, rentalStartDate, rentalEndDate) {
+      this.car = car;
+      this.renterName = renterName;
+      this.rentalStartDate = rentalStartDate;
+      this.rentalEndDate = rentalEndDate;
     }
-
-    calculateRentalDuration(){
-        const rentalDuration = this.rentalEndDate - this.rentalStartDate
-       const durationInDays = this.rentalEndDate - this.rentalStartDate / oneDay;
-        return diffDays;
+    calculateRentalDuration() {
+      const startDate = this.rentalStartDate.getTime();
+      const endDate = this.rentalEndDate.getTime();
+      const duration = endDate - startDate;
+      return Math.ceil(duration / (1000 * 60 * 60 * 24)); 
     }
-}
+  }
+  
+  const thisCar = new Car("Ford", "Jetta", 2020, true);
+  
+  const rentalInfo = new Rental(thisCar, "John Doe", new Date("2024-04-20"), new Date("2024-04-25"));
+  
+  const rentalDuration = rentalInfo.calculateRentalDuration();
+  console.log("Rental duration:", rentalDuration, "days");
 
-const myCar = new Car('Toyota', 'Camry', 2020);
-
-// Creating a rental instance
-const myRental = new Rental(myCar, 'John Doe', '2023-05-01', '2023-05-07');
-
-
-const rentalDuration = myRental.calculateRentalDuration();
-console.log(`The rental duration is ${rentalDuration} days.`);
 
 // QUESTION TWO
 class Question {
@@ -89,18 +82,14 @@ class Question {
     }
    }
 
-   // Creating a quiz instance
 const myQuiz = new Quiz();
 
-// Adding questions to the quiz
 myQuiz.addQuestion(new Question("What is the capital of France?", ["Paris", "London", "Berlin"], "Paris"));
 myQuiz.addQuestion(new Question("What is the largest planet in our solar system?", ["Earth", "Mars", "Jupiter"], "Jupiter"));
 
-// Simulating user answering questions
-myQuiz.submitAnswer("Paris"); // Correct answer
-myQuiz.submitAnswer("Mars"); // Incorrect answer
+myQuiz.submitAnswer("Paris"); 
+myQuiz.submitAnswer("Mars"); 
 
-// Checking the final score
 console.log(`Your final score is ${myQuiz.score} out of ${myQuiz.questions.length}.`);
 
 
