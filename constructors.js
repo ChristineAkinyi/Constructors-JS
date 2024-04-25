@@ -22,7 +22,7 @@ class Car {
       const startDate = this.rentalStartDate.getTime();
       const endDate = this.rentalEndDate.getTime();
       const duration = endDate - startDate;
-      return Math.ceil(duration / (1000 * 60 * 60 * 24)); 
+      return Math.round(duration / (1000 * 60 * 60 * 24)); 
     }
   }
   
